@@ -1,14 +1,15 @@
 require 'spec_helper'
 
-if HAS_SQLITE3 || HAS_MYSQL || HAS_POSTGRES
-  describe DataMapper::Collection do
+describe DataMapper::Collection do
+
+  before :all do
+    @dragons   = Dragon.all
+    @countries = Country.all
+  end
+
+  supported_by :sqlite, :mysql, :postgres do
+
     it_should_behave_like 'It Has Setup Resources'
-
-    before :all do
-      @dragons   = Dragon.all
-      @countries = Country.all
-    end
-
     it_should_behave_like 'An Aggregatable Class'
 
     describe 'ignore invalid query' do
@@ -112,5 +113,7 @@ if HAS_SQLITE3 || HAS_MYSQL || HAS_POSTGRES
         @dragons.aggregate(:birth_at, :all.count).should == Dragon.aggregate(:birth_at, :all.count).reverse
       end
     end
+
   end
+
 end

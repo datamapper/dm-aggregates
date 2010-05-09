@@ -1,40 +1,5 @@
 shared_examples_for 'It Has Setup Resources' do
   before :all do
-    # A simplistic example, using with an Integer property
-    class ::Knight
-      include DataMapper::Resource
-
-      property :id,   Serial
-      property :name, String
-    end
-
-    class ::Dragon
-      include DataMapper::Resource
-
-      property :id,                Serial
-      property :name,              String
-      property :is_fire_breathing, Boolean
-      property :toes_on_claw,      Integer
-      property :birth_at,          DateTime
-      property :birth_on,          Date
-      property :birth_time,        Time
-
-      belongs_to :knight, :required => false
-    end
-
-    # A more complex example, with BigDecimal and Float properties
-    # Statistics taken from CIA World Factbook:
-    # https://www.cia.gov/library/publications/the-world-factbook/
-    class ::Country
-      include DataMapper::Resource
-
-      property :id,                  Serial
-      property :name,                String,     :required => true
-      property :population,          Integer
-      property :birth_rate,          Float,      :precision => 4,  :scale => 2
-      property :gold_reserve_tonnes, Float,      :precision => 6,  :scale => 2
-      property :gold_reserve_value,  BigDecimal, :precision => 15, :scale => 1  # approx. value in USD
-    end
 
     DataMapper.auto_migrate!
 
