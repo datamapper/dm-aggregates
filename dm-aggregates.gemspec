@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Foy Savas"]
-  s.date = %q{2010-03-22}
+  s.date = %q{2010-05-09}
   s.description = %q{DataMapper plugin providing support for aggregates on collections}
   s.email = %q{foysavas [a] gmail [d] com}
   s.extra_rdoc_files = [
@@ -17,7 +17,8 @@ Gem::Specification.new do |s|
      "README.rdoc"
   ]
   s.files = [
-    "Gemfile",
+    ".gitignore",
+     "Gemfile",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -49,6 +50,12 @@ Gem::Specification.new do |s|
   s.rubyforge_project = %q{datamapper}
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{DataMapper plugin providing support for aggregates on collections}
+  s.test_files = [
+    "spec/public/collection_spec.rb",
+     "spec/public/model_spec.rb",
+     "spec/public/shared/aggregate_shared_spec.rb",
+     "spec/spec_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
