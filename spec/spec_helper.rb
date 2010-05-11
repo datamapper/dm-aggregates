@@ -6,6 +6,8 @@ require 'dm-migrations'
 
 require 'public/shared/aggregate_shared_spec'
 
+DataMapper::Spec.setup
+
 Spec::Runner.configure do |config|
 
   config.extend(DataMapper::Spec::Adapters::Helpers)
