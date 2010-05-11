@@ -58,7 +58,7 @@ module DataMapper
         query         = args.last.kind_of?(Hash) ? args.pop : {}
         property_name = args.first
 
-        assert_property_type property_name, Integer, Float, BigDecimal, DateTime, Date, Time
+        assert_property_type property_name, ::Integer, ::Float, ::BigDecimal, ::DateTime, ::Date, ::Time
 
         aggregate(query.merge(:fields => [ property_name.min ]))
       end
@@ -81,7 +81,7 @@ module DataMapper
         query         = args.last.kind_of?(Hash) ? args.pop : {}
         property_name = args.first
 
-        assert_property_type property_name, Integer, Float, BigDecimal, DateTime, Date, Time
+        assert_property_type property_name, ::Integer, ::Float, ::BigDecimal, ::DateTime, ::Date, ::Time
 
         aggregate(query.merge(:fields => [ property_name.max ]))
       end
@@ -104,7 +104,7 @@ module DataMapper
         query         = args.last.kind_of?(Hash) ? args.pop : {}
         property_name = args.first
 
-        assert_property_type property_name, Integer, Float, BigDecimal
+        assert_property_type property_name, ::Integer, ::Float, ::BigDecimal
 
         aggregate(query.merge(:fields => [ property_name.avg ]))
       end
@@ -124,10 +124,10 @@ module DataMapper
       #
       # @api public
       def sum(*args)
-        query         = args.last.kind_of?(Hash) ? args.pop : {}
+        query         = args.last.kind_of?(::Hash) ? args.pop : {}
         property_name = args.first
 
-        assert_property_type property_name, Integer, Float, BigDecimal
+        assert_property_type property_name, ::Integer, ::Float, ::BigDecimal
 
         aggregate(query.merge(:fields => [ property_name.sum ]))
       end
@@ -194,7 +194,7 @@ module DataMapper
         end
 
         property = property_by_name(name)
-        type     = property.custom? ? property.primitive : property.type
+        type     = property.primitive
 
         unless types.include?(type)
           raise ArgumentError, "#{name} must be #{types * ' or '}, but was #{type}"

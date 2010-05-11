@@ -56,7 +56,7 @@ module DataMapper
       end
 
       def avg(property, value)
-        property.type == Integer ? value.to_f : property.load(value)
+        property.primitive == ::Integer ? value.to_f : property.load(value)
       end
 
       def sum(property, value)
