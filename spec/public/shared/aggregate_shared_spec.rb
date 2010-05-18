@@ -1,5 +1,12 @@
 shared_examples_for 'It Has Setup Resources' do
   before :all do
+    @mysql    = defined?(DataMapper::Adapters::MysqlAdapter)    && @adapter.kind_of?(DataMapper::Adapters::MysqlAdapter)
+    @postgres = defined?(DataMapper::Adapters::PostgresAdapter) && @adapter.kind_of?(DataMapper::Adapters::PostgresAdapter)
+
+    @skip = (@mysql || @postgres) && ENV['TZ'].to_s.downcase != 'utc'
+  end
+
+  before :all do
 
     DataMapper.auto_migrate!
 
@@ -105,6 +112,7 @@ shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'should provide the lowest value of a DateTime property' do
+        pending 'TODO: returns incorrect value until DO handles TZs properly' if @skip
         @dragons.min(:birth_at).should be_kind_of(DateTime)
         @dragons.min(:birth_at).to_s.should == @birth_at.to_s
       end
@@ -150,6 +158,7 @@ shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'should provide the highest value of a DateTime property' do
+        pending 'TODO: returns incorrect value until DO handles TZs properly' if @skip
         @dragons.min(:birth_at).should be_kind_of(DateTime)
         @dragons.min(:birth_at).to_s.should == @birth_at.to_s
       end
