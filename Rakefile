@@ -10,7 +10,7 @@ begin
     gem.summary     = 'DataMapper plugin providing support for aggregates on collections'
     gem.description = gem.summary
     gem.email       = 'foysavas [a] gmail [d] com'
-    gem.homepage    = 'http://github.com/datamapper/dm-more/tree/master/%s' % gem.name
+    gem.homepage    = 'http://github.com/datamapper/%s' % gem.name
     gem.authors     = [ 'Foy Savas' ]
 
     gem.rubyforge_project = 'datamapper'
