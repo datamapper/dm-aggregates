@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "dm-aggregates.gemspec",
      "lib/dm-aggregates.rb",
-     "lib/dm-aggregates/adapters/data_objects_adapter.rb",
+     "lib/dm-aggregates/adapters/dm-do-adapter.rb",
      "lib/dm-aggregates/aggregate_functions.rb",
      "lib/dm-aggregates/collection.rb",
      "lib/dm-aggregates/core_ext/symbol.rb",
