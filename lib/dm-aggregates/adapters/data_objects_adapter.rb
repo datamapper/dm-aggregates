@@ -106,20 +106,4 @@ module DataMapper
       end # module SQL
     end # class DataObjectsAdapter
   end # module Aggregates
-
-  module Adapters
-    extendable do
-
-      # TODO: document
-      # @api private
-      def const_added(const_name)
-        if DataMapper::Aggregates.const_defined?(const_name)
-          adapter = const_get(const_name)
-          adapter.send(:include, DataMapper::Aggregates.const_get(const_name))
-        end
-
-        super
-      end
-    end
-  end # module Adapters
 end # module DataMapper
