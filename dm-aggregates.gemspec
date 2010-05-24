@@ -32,6 +32,9 @@ Gem::Specification.new do |s|
      "lib/dm-aggregates/model.rb",
      "lib/dm-aggregates/query.rb",
      "lib/dm-aggregates/repository.rb",
+     "spec/isolated/require_after_setup_spec.rb",
+     "spec/isolated/require_before_setup_spec.rb",
+     "spec/isolated/require_spec.rb",
      "spec/public/collection_spec.rb",
      "spec/public/model_spec.rb",
      "spec/public/shared/aggregate_shared_spec.rb",
@@ -52,7 +55,10 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{DataMapper plugin providing support for aggregates on collections}
   s.test_files = [
-    "spec/public/collection_spec.rb",
+    "spec/isolated/require_after_setup_spec.rb",
+     "spec/isolated/require_before_setup_spec.rb",
+     "spec/isolated/require_spec.rb",
+     "spec/public/collection_spec.rb",
      "spec/public/model_spec.rb",
      "spec/public/shared/aggregate_shared_spec.rb",
      "spec/spec_helper.rb"
