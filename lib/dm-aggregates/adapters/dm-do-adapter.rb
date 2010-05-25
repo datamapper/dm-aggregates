@@ -1,9 +1,7 @@
 module DataMapper
   module Aggregates
     module DataObjectsAdapter
-      def self.included(base)
-        base.send(:include, SQL)
-      end
+      extend Chainable
 
       def aggregate(query)
         fields = query.fields
@@ -63,47 +61,40 @@ module DataMapper
         property.load(value)
       end
 
-      module SQL
-        def self.included(base)
-          base.class_eval <<-RUBY, __FILE__, __LINE__ + 1
-            # FIXME: figure out a cleaner approach than AMC
-            alias property_to_column_name_without_operator property_to_column_name
-            alias property_to_column_name property_to_column_name_with_operator
-          RUBY
-        end
-
-        def property_to_column_name_with_operator(property, qualify)
+      chainable do
+        def property_to_column_name(property, qualify)
           case property
             when DataMapper::Query::Operator
               aggregate_field_statement(property.operator, property.target, qualify)
 
             when Property, DataMapper::Query::Path
-              property_to_column_name_without_operator(property, qualify)
+              super
 
             else
               raise ArgumentError, "+property+ must be a DataMapper::Query::Operator, a DataMapper::Property or a Query::Path, but was a #{property.class} (#{property.inspect})"
           end
         end
+      end
 
-        def aggregate_field_statement(aggregate_function, property, qualify)
-          column_name = if aggregate_function == :count && property == :all
-            '*'
-          else
-            property_to_column_name(property, qualify)
-          end
-
-          function_name = case aggregate_function
-            when :count then 'COUNT'
-            when :min   then 'MIN'
-            when :max   then 'MAX'
-            when :avg   then 'AVG'
-            when :sum   then 'SUM'
-            else raise "Invalid aggregate function: #{aggregate_function.inspect}"
-          end
-
-          "#{function_name}(#{column_name})"
+      def aggregate_field_statement(aggregate_function, property, qualify)
+        column_name = if aggregate_function == :count && property == :all
+          '*'
+        else
+          property_to_column_name(property, qualify)
         end
-      end # module SQL
+
+        function_name = case aggregate_function
+          when :count then 'COUNT'
+          when :min   then 'MIN'
+          when :max   then 'MAX'
+          when :avg   then 'AVG'
+          when :sum   then 'SUM'
+          else raise "Invalid aggregate function: #{aggregate_function.inspect}"
+        end
+
+        "#{function_name}(#{column_name})"
+      end
+
     end # class DataObjectsAdapter
   end # module Aggregates
 end # module DataMapper
