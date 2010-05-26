@@ -49,6 +49,7 @@ Spec::Runner.configure do |config|
       property :gold_reserve_tonnes, Float,   :precision => 6,  :scale => 2
       property :gold_reserve_value,  Decimal, :precision => 15, :scale => 1  # approx. value in USD
     end
+    DataMapper.finalize
 
   end
 end
