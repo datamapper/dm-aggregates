@@ -58,7 +58,7 @@ shared_examples_for 'It Has Setup Resources' do
                     :gold_reserve_tonnes => 3417.4,
                     :gold_reserve_value  => 3417.4 * @gold_tonne_price)
 
-    @approx_by = 0.000001
+    @approx_by = 0.0001
   end
 end
 
