@@ -144,7 +144,7 @@ module DataMapper
       #   Friend.aggregate(:age.avg, :fields => [ :gender ])
       #
       # @param aggregates [Symbol, ...] operators to aggregate with
-      # @params query [Hash] the conditions
+      # @param query [Hash] the conditions
       #
       # @return [Array,Numeric,DateTime,Date,Time] the results of the
       #   aggregate query
