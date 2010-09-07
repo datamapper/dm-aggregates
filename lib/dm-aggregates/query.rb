@@ -4,8 +4,8 @@ module DataMapper
       def self.included(base)
         base.class_eval <<-RUBY, __FILE__, __LINE__ + 1
           # FIXME: figure out a cleaner approach than AMC
-          alias assert_valid_fields_without_operator assert_valid_fields
-          alias assert_valid_fields assert_valid_fields_with_operator
+          alias_method :assert_valid_fields_without_operator, :assert_valid_fields
+          alias_method :assert_valid_fields, :assert_valid_fields_with_operator
         RUBY
       end
 
