@@ -104,6 +104,23 @@ describe DataMapper::Collection do
       end
     end
 
+    describe 'with a collection limited to 1 result' do
+
+      before do
+        @dragons = Dragon.all(:limit => 1)
+      end
+
+      [ :size, :count ].each do |method|
+        describe "##{method}" do
+          it 'should return 1' do
+            @dragons.send(method).should == 1
+          end
+        end
+      end
+
+
+    end
+
     describe 'with the order reversed by the grouping field' do
       before do
         @dragons = Dragon.all(:order => [ :birth_at.desc ])
