@@ -110,14 +110,17 @@ describe DataMapper::Collection do
         @dragons = Dragon.all(:limit => 1)
       end
 
-      [ :size, :count ].each do |method|
-        describe "##{method}" do
-          it 'should return 1' do
-            @dragons.send(method).should == 1
-          end
+      describe "#size" do
+        it 'should return 1' do
+          @dragons.size.should == 1
         end
       end
 
+      describe "#count" do
+        it 'should return 1' do
+          pending { @dragons.count.should == 1 }
+        end
+      end
 
     end
 
