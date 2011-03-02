@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
     "lib/dm-aggregates/core_ext/symbol.rb",
     "lib/dm-aggregates/functions.rb",
     "lib/dm-aggregates/model.rb",
+    "lib/dm-aggregates/operators.rb",
     "lib/dm-aggregates/query.rb",
     "lib/dm-aggregates/repository.rb",
     "spec/isolated/require_after_setup_spec.rb",
