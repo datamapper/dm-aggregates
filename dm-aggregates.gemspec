@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Foy Savas"]
-  s.date = %q{2011-02-28}
+  s.date = %q{2011-03-01}
   s.description = %q{DataMapper plugin providing support for aggregates on collections}
   s.email = %q{foysavas [a] gmail [d] com}
   s.extra_rdoc_files = [
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/dm-aggregates/aggregate_functions.rb",
     "lib/dm-aggregates/collection.rb",
     "lib/dm-aggregates/core_ext/symbol.rb",
+    "lib/dm-aggregates/functions.rb",
     "lib/dm-aggregates/model.rb",
     "lib/dm-aggregates/query.rb",
     "lib/dm-aggregates/repository.rb",
