@@ -3,10 +3,6 @@ module DataMapper
     module Model
       include Functions
 
-#      def size
-#        count
-#      end
-
       private
 
       def property_by_name(property_name)
