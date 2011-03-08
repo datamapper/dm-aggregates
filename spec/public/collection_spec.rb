@@ -118,7 +118,9 @@ describe DataMapper::Collection do
 
       describe "#count" do
         it 'should return 1' do
-          pending { @dragons.count.should == 1 }
+          pending 'TODO: make count apply to the limited collection. Currently limit applies after the count' do
+            @dragons.count.should == 1
+          end
         end
       end
 
