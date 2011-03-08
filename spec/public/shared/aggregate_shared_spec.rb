@@ -10,9 +10,9 @@ shared_examples_for 'It Has Setup Resources' do
 
     DataMapper.auto_migrate!
 
-    @birth_time = Time.now
-    @birth_at   = @birth_time.to_datetime
-    @birth_on   = @birth_time.send(:to_date)
+    @birth_at   = DateTime.now
+    @birth_on   = Date.parse(@birth_at.to_s)
+    @birth_time = Time.parse(@birth_at.to_s)
 
     @chuck = Knight.create(:name => 'Chuck')
     @larry = Knight.create(:name => 'Larry')
