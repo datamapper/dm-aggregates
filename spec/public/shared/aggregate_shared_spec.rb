@@ -112,9 +112,10 @@ shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'should provide the lowest value of a DateTime property' do
-        pending 'TODO: returns incorrect value until DO handles TZs properly' if @skip
-        @dragons.min(:birth_at).should be_kind_of(DateTime)
-        @dragons.min(:birth_at).to_s.should == @birth_at.to_s
+        pending_if 'TODO: returns incorrect value until DO handles TZs properly', @skip do
+          @dragons.min(:birth_at).should be_kind_of(DateTime)
+          @dragons.min(:birth_at).to_s.should == @birth_at.to_s
+        end
       end
 
       it 'should provide the lowest value of a Date property' do
@@ -158,9 +159,10 @@ shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'should provide the highest value of a DateTime property' do
-        pending 'TODO: returns incorrect value until DO handles TZs properly' if @skip
-        @dragons.min(:birth_at).should be_kind_of(DateTime)
-        @dragons.min(:birth_at).to_s.should == @birth_at.to_s
+        pending_if 'TODO: returns incorrect value until DO handles TZs properly', @skip do
+          @dragons.min(:birth_at).should be_kind_of(DateTime)
+          @dragons.min(:birth_at).to_s.should == @birth_at.to_s
+        end
       end
 
       it 'should provide the highest value of a Date property' do
