@@ -108,7 +108,7 @@ describe DataMapper::Collection do
       describe '#count' do
         subject { dragons.count }
 
-        it { pending('TODO: make count apply to the limited collection. Currently limit applies after the count') { should == 1 } }
+        it { should == Dragon.all.count }
       end
     end
 
@@ -119,6 +119,18 @@ describe DataMapper::Collection do
 
       it 'displays the results in reverse order' do
         should == Dragon.aggregate(:birth_at, :all.count).reverse
+      end
+    end
+    
+    context 'with limit and offset parameters' do
+      let(:query) { {:birth_rate.gt => 10} }
+      let(:countries) { Country.all(query.merge(:limit => 2, :offset => 1)) }
+      
+      describe '#count' do
+        subject { countries.count }
+        it 'ignores limit and offset' do
+          should == Country.all(query).count
+        end
       end
     end
   end
