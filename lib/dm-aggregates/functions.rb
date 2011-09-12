@@ -194,7 +194,7 @@ module DataMapper
         end
 
         property = property_by_name(name)
-        type     = property.primitive
+        type     = property.dump_class
 
         unless types.include?(type)
           raise ArgumentError, "#{name} must be #{types * ' or '}, but was #{type}"

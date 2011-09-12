@@ -5,7 +5,7 @@ module DataMapper
 
       def aggregate(query)
         fields = query.fields
-        types  = fields.map { |p| p.respond_to?(:operator) ? String : p.primitive }
+        types  = fields.map { |p| p.respond_to?(:operator) ? String : p.dump_class }
 
         field_size = fields.size
 
@@ -54,7 +54,7 @@ module DataMapper
       end
 
       def avg(property, value)
-        property.primitive == ::Integer ? value.to_f : property.load(value)
+        property.dump_class.equal?(::Integer) ? value.to_f : property.load(value)
       end
 
       def sum(property, value)
