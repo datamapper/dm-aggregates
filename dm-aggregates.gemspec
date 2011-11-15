@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = `git ls-files -- {spec}/*`.split("\n")
   gem.extra_rdoc_files = %w[LICENSE README.rdoc]
 
-  gem.name          = "dm-aggregatess"
+  gem.name          = "dm-aggregates"
   gem.require_paths = [ "lib" ]
   gem.version       = DataMapper::Aggregates::VERSION
 
