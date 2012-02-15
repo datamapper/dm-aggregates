@@ -1,3 +1,5 @@
+require 'backports'
+
 require 'dm-core/spec/setup'
 require 'dm-core/spec/lib/adapter_helpers'
 require 'dm-core/spec/lib/pending_helpers'
