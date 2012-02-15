@@ -1,6 +1,6 @@
 module DataMapper
   module Aggregates
-    module Operators
+    module SymbolOperators
       def count
         DataMapper::Query::Operator.new(self, :count)
       end
@@ -20,6 +20,6 @@ module DataMapper
       def sum
         DataMapper::Query::Operator.new(self, :sum)
       end
-    end # module Operators
+    end # module SymbolOperators
   end # module Aggregates
 end # module DataMapper

@@ -1,7 +1,5 @@
-require 'dm-aggregates/operators'
+require 'dm-aggregates/symbol_operators'
 
 class Symbol
-
-  include DataMapper::Aggregates::Operators
-
+  include DataMapper::Aggregates::SymbolOperators
 end
