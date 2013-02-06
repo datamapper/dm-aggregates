@@ -178,6 +178,10 @@ module DataMapper
         end
 
         query = scoped_query(query)
+        
+        if query.fields.include?(:all.count)
+          query.instance_variable_set(:@offset, 0)
+        end
 
         if query.fields.any? { |p| p.kind_of?(Property) }
           query.repository.aggregate(query.update(:unique => true))
