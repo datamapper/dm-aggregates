@@ -2,8 +2,6 @@ RSpec.shared_examples_for 'It Has Setup Resources' do
   before :all do
     @mysql    = defined?(DataMapper::Adapters::MysqlAdapter)    && @adapter.kind_of?(DataMapper::Adapters::MysqlAdapter)
     @postgres = defined?(DataMapper::Adapters::PostgresAdapter) && @adapter.kind_of?(DataMapper::Adapters::PostgresAdapter)
-
-    @skip = (@mysql || @postgres) && ENV['TZ'].to_s.downcase != 'utc'
   end
 
   before :all do
@@ -131,10 +129,8 @@ RSpec.shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'provides the lowest value of a DateTime property' do
-        pending_if 'TODO: returns incorrect value until DO handles TZs properly', @skip do
-          expect(dragons.min(:birth_at)).to be_kind_of(DateTime)
-          expect(dragons.min(:birth_at).to_s).to eq(@birth_at.to_s)
-        end
+        expect(dragons.min(:birth_at)).to be_kind_of(DateTime)
+        expect(dragons.min(:birth_at).to_s).to eq(@birth_at.to_s)
       end
 
       it 'provides the lowest value of a Date property' do
@@ -178,10 +174,8 @@ RSpec.shared_examples_for 'An Aggregatable Class' do
       end
 
       it 'provides the highest value of a DateTime property' do
-        pending_if 'TODO: returns incorrect value until DO handles TZs properly', @skip do
-          expect(dragons.min(:birth_at)).to be_kind_of(DateTime)
-          expect(dragons.min(:birth_at).to_s).to eq(@birth_at.to_s)
-        end
+        expect(dragons.min(:birth_at)).to be_kind_of(DateTime)
+        expect(dragons.min(:birth_at).to_s).to eq(@birth_at.to_s)
       end
 
       it 'provides the highest value of a Date property' do
