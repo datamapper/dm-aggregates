@@ -7,6 +7,9 @@ require 'dm-migrations'
 
 require 'public/shared/aggregate_shared_spec'
 
+# Some of the tests fail when TZ is not set, but not when it's blank. Go figure
+ENV['TZ'] ||= ''
+
 DataMapper::Spec.setup
 
 RSpec.configure do |config|
