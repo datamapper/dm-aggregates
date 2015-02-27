@@ -1,12 +1,12 @@
 require 'spec_helper'
 
-describe DataMapper::Collection do
+RSpec.describe DataMapper::Collection do
   supported_by :sqlite, :mysql, :postgres do
     let(:dragons)   { Dragon.all  }
     let(:countries) { Country.all }
 
-    it_should_behave_like 'It Has Setup Resources'
-    it_should_behave_like 'An Aggregatable Class'
+    include_examples 'It Has Setup Resources'
+    include_examples 'An Aggregatable Class'
 
     describe 'ignore invalid query' do
       let(:dragons) { Dragon.all.all(:id => []) }

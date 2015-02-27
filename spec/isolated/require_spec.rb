@@ -1,4 +1,4 @@
-shared_examples_for "require 'dm-aggregates'" do
+RSpec.shared_examples_for "require 'dm-aggregates'" do
 
   %w[ Repository Model Collection Query ].each do |name|
     it "should include the aggregate api in DataMapper::#{name}" do

@@ -1,6 +1,4 @@
-require 'backports'
-require 'spec'
-
+require 'rspec'
 require 'isolated/require_spec'
 require 'dm-core/spec/setup'
 
@@ -9,14 +7,14 @@ require 'dm-core/spec/setup'
 
 if %w[ postgres mysql sqlite oracle sqlserver ].include?(ENV['ADAPTER'])
 
-  describe "require 'dm-aggregates' before calling DataMapper.setup" do
+  RSpec.describe "require 'dm-aggregates' before calling DataMapper.setup" do
 
     before(:all) do
       require 'dm-aggregates'
       @adapter = DataMapper::Spec.adapter
     end
 
-    it_should_behave_like "require 'dm-aggregates'"
+    include_examples "require 'dm-aggregates'"
 
   end
 
