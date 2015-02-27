@@ -15,38 +15,38 @@ RSpec.describe DataMapper::Collection do
         describe "##{method}" do
           subject { dragons.send(method) }
 
-          it { should == 0 }
+          it { is_expected.to eq(0) }
         end
       end
 
       describe '#min' do
         subject { dragons.min(:id) }
 
-        it { should be_nil }
+        it { is_expected.to be_nil }
       end
 
       describe '#max' do
         subject { dragons.max(:id) }
 
-        it { should be_nil }
+        it { is_expected.to be_nil }
       end
 
       describe '#avg' do
         subject { dragons.avg(:id) }
 
-        it { should be_nil }
+        it { is_expected.to be_nil }
       end
 
       describe '#sum' do
         subject { dragons.sum(:id) }
 
-        it { should be_nil }
+        it { is_expected.to be_nil }
       end
 
       describe '#aggregate' do
         subject { dragons.aggregate(:id) }
 
-        it { should == [] }
+        it { is_expected.to eq([]) }
       end
     end
 
@@ -56,43 +56,43 @@ RSpec.describe DataMapper::Collection do
       describe '#size' do
         subject { collection.size }
 
-        it { should == 2 }
+        it { is_expected.to eq(2) }
       end
 
       describe '#count' do
         subject { collection.count }
 
-        it { should == 2 }
+        it { is_expected.to eq(2) }
       end
 
       describe '#min' do
         subject { collection.min(:toes_on_claw) }
 
-        it { should == 3 }
+        it { is_expected.to eq(3) }
       end
 
       describe '#max' do
         subject { collection.max(:toes_on_claw) }
 
-        it { should == 4 }
+        it { is_expected.to eq(4) }
       end
 
       describe '#avg' do
         subject { collection.avg(:toes_on_claw) }
 
-        it { should == 3.5 }
+        it { is_expected.to eq(3.5) }
       end
 
       describe '#sum' do
         subject { collection.sum(:toes_on_claw) }
 
-        it { should == 7 }
+        it { is_expected.to eq(7) }
       end
 
       describe '#aggregate' do
         subject { collection.aggregate(:all.count, :name.count, :toes_on_claw.min, :toes_on_claw.max, :toes_on_claw.avg, :toes_on_claw.sum)}
 
-        it { should == [ 2, 2, 3, 4, 3.5, 7 ] }
+        it { is_expected.to eq([ 2, 2, 3, 4, 3.5, 7 ]) }
       end
     end
 
@@ -102,13 +102,14 @@ RSpec.describe DataMapper::Collection do
       describe '#size' do
         subject { dragons.size }
 
-        it { should == 1 }
+        it { is_expected.to eq(1) }
       end
 
       describe '#count' do
         subject { dragons.count }
 
-        it { pending('TODO: make count apply to the limited collection. Currently limit applies after the count') { should == 1 } }
+        it { pending('TODO: make count apply to the limited collection. Currently limit applies after the count')
+          is_expected.to eq(1) }
       end
     end
 
@@ -118,7 +119,7 @@ RSpec.describe DataMapper::Collection do
       let(:dragons) { Dragon.all(:order => [ :birth_at.desc ]) }
 
       it 'displays the results in reverse order' do
-        should == Dragon.aggregate(:birth_at, :all.count).reverse
+        is_expected.to eq(Dragon.aggregate(:birth_at, :all.count).reverse)
       end
     end
   end
