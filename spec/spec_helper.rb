@@ -1,5 +1,3 @@
-require 'backports'
-
 require 'dm-core/spec/setup'
 require 'dm-core/spec/lib/adapter_helpers'
 require 'dm-core/spec/lib/pending_helpers'
@@ -9,9 +7,12 @@ require 'dm-migrations'
 
 require 'public/shared/aggregate_shared_spec'
 
+# Some of the tests fail when TZ is not set, but not when it's blank. Go figure
+ENV['TZ'] ||= ''
+
 DataMapper::Spec.setup
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
 
   config.extend(DataMapper::Spec::Adapters::Helpers)
   config.include(DataMapper::Spec::PendingHelpers)
